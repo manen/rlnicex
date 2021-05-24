@@ -150,7 +150,7 @@ var (
 )
 
 func init() {
-	// defaultStyleConfig.Apply()
+	defaultStyleConfig.Apply()
 }
 
 func setBaseStyle(s Style) error {
