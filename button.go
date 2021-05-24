@@ -16,13 +16,27 @@ func NewButton(label Label, x, y, w, h float64) Button {
 	}
 }
 
+func (b Button) IsHovered(r Offset) bool {
+	final := getFinal(b.Pos, r)
+	return rl.CheckCollisionPointRec(rl.GetMousePosition(), final.ToFloat32())
+}
+
+func (b Button) IsClicked(r Offset) bool {
+	return b.IsHovered(r) && rl.IsMouseButtonReleased(rl.MouseLeftButton)
+}
+
+func (b Button) IsHeld(r Offset) bool {
+	return b.IsHovered(r) && rl.IsMouseButtonDown(rl.MouseLeftButton)
+}
+
 func (b Button) Render(r Offset) {
 	final := getFinal(b.Pos, r)
+	style := getUsedStyle(b, r)
 
 	// Draw the background
 	rl.DrawRectangle(final.X, final.Y, final.Width, final.Height, style.BackgroundColor)
 	// Render the label
-	b.Label.Render(r.Sub(float64(b.Pos.X)+float64(b.Pos.Width)/2, float64(b.Pos.Y)+float64(b.Pos.Height)/2))
+	b.Label.RenderWithStyle(r.Sub(float64(b.Pos.X)+float64(b.Pos.Width)/2, float64(b.Pos.Y)+float64(b.Pos.Height)/2), style)
 
-	DrawBorder(final)
+	DrawBorder(final, style)
 }

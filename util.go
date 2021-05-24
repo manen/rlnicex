@@ -10,7 +10,7 @@ func getFinal(base rl.Rectangle, r Offset) rl.RectangleInt32 {
 	return final
 }
 
-func DrawBorder(pos rl.RectangleInt32) {
+func DrawBorder(pos rl.RectangleInt32, style Style) {
 	if style.BorderWidth <= 0 {
 		return
 	}
@@ -23,4 +23,9 @@ func DrawBorder(pos rl.RectangleInt32) {
 	rl.DrawRectangle(pos.X-int32(style.BorderWidth/2), pos.Y+pos.Height-int32(style.BorderWidth/2), pos.Width, int32(style.BorderWidth), style.BorderColor)
 	// Right
 	rl.DrawRectangle(pos.X+pos.Width-int32(style.BorderWidth/2), pos.Y-int32(style.BorderWidth/2), int32(style.BorderWidth), pos.Height+int32(style.BorderWidth), style.BorderColor)
+}
+
+type Hoverable interface {
+	IsHovered(r Offset) bool
+	IsHeld(r Offset) bool
 }

@@ -23,7 +23,7 @@ func NewLabelSimple(label string) Label {
 	return NewLabel(label, true, 0, 0)
 }
 
-func (l Label) Render(r Offset) {
+func (l Label) RenderWithStyle(r Offset, style Style) {
 	final := getFinal(rl.Rectangle{
 		X: float32(l.Pos.X),
 		Y: float32(l.Pos.Y),
@@ -39,4 +39,8 @@ func (l Label) Render(r Offset) {
 		X: float32(final.X),
 		Y: float32(final.Y),
 	}, float32(style.FontSize), float32(style.FontSpacing), style.FontColor)
+}
+
+func (l Label) Render(r Offset) {
+	l.RenderWithStyle(r, baseStyle)
 }

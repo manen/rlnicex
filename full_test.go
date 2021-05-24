@@ -1,6 +1,7 @@
 package rlnicex_test
 
 import (
+	"log"
 	"testing"
 
 	rl "github.com/gen2brain/raylib-go/raylib"
@@ -11,7 +12,10 @@ func TestFull(t *testing.T) {
 	rl.InitWindow(690, 420, "Test") // I can't keep memorizing these small 16:9 ratios
 	rl.SetTargetFPS(60)
 
-	rlx.LoadStyle("./test_assets/style.json")
+	err := rlx.LoadStyle("./test_assets/style.json")
+	if err != nil {
+		log.Panicln(err)
+	}
 
 	r := rlx.NewOffset(0, 0)
 	btn := rlx.NewButton(rlx.NewLabelSimple("Nice"), 10, 10, 140, 40)
@@ -22,6 +26,7 @@ func TestFull(t *testing.T) {
 
 		r.Y += 0.33
 		btn.Render(r)
+		rl.DrawFPS(4, 4)
 
 		rl.EndDrawing()
 	}
