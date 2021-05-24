@@ -24,7 +24,7 @@ var DefaultStyle Style = Style{
 	FontSize:    16,
 	FontSpacing: 2.4,
 
-	BorderWidth: 1,
+	BorderWidth: 2,
 	BorderColor: rl.GetColor(0x343536ff),
 }
 

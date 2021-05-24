@@ -16,11 +16,13 @@ func NewButton(label Label, x, y, w, h float64) Button {
 	}
 }
 
-func (b Button) Render(r Renderer) {
+func (b Button) Render(r Offset) {
 	final := getFinal(b.Pos, r)
 
 	// Draw the background
 	rl.DrawRectangle(final.X, final.Y, final.Width, final.Height, style.BackgroundColor)
 	// Render the label
 	b.Label.Render(r.Sub(float64(b.Pos.X)+float64(b.Pos.Width)/2, float64(b.Pos.Y)+float64(b.Pos.Height)/2))
+
+	DrawBorder(final)
 }

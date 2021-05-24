@@ -20,7 +20,7 @@ func NewLabelSimple(label string) Label {
 	return NewLabel(label, true, 0, 0, 0, 0)
 }
 
-func (l Label) Render(r Renderer) {
+func (l Label) Render(r Offset) {
 	final := getFinal(l.Pos, r)
 	if l.Centered {
 		o := rl.MeasureTextEx(rl.GetFontDefault(), l.Label, float32(style.FontSize), float32(style.FontSpacing))
