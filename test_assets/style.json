@@ -1,0 +1,25 @@
+{
+	"backgroundColor": {
+		"r": 20,
+		"g": 21,
+		"b": 22,
+		"a": 255
+	},
+
+	"fontColor": {
+		"r": 221,
+		"g": 221,
+		"b": 221,
+		"a": 255
+	},
+	"fontSize": 16,
+	"fontSpacing": 2.4,
+
+	"borderWidth": 2,
+	"borderColor": {
+		"r": 52,
+		"g": 53,
+		"b": 54,
+		"a": 255
+	}
+}
