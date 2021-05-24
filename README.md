@@ -11,7 +11,10 @@ RlNiceX is a [Raylib](https://www.raylib.com) library for creating and styling i
 Example usages for all widgets + styling
 
 ```go
-import rlx "github.com/manen/rlnicex"
+import (
+  rl "github.com/gen2brain/raylib-go/raylib"
+  rlx "github.com/manen/rlnicex"
+)
 ```
 
 (You'll need a correctly initialized Raylib window)
