@@ -24,7 +24,6 @@ func TestFull(t *testing.T) {
 		rl.BeginDrawing()
 		rl.ClearBackground(rl.Black)
 
-		r.Y += 0.33
 		btn.Render(r)
 		rl.DrawFPS(4, 4)
 
