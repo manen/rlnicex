@@ -31,5 +31,5 @@ func (l Label) Render(r Offset) {
 	rl.DrawTextEx(rl.GetFontDefault(), l.Label, rl.Vector2{
 		X: float32(final.X),
 		Y: float32(final.Y),
-	}, float32(style.FontSize), float32(style.FontSpacing), rl.White)
+	}, float32(style.FontSize), float32(style.FontSpacing), style.FontColor)
 }

@@ -6,6 +6,8 @@ type Style struct {
 	// BackgroundColor is the color of the background of all widgets.
 	BackgroundColor rl.Color
 
+	// FontColor
+	FontColor rl.Color
 	// FontSize is the... font size.
 	FontSize float64
 	// FontSpacing is the space between the letters. It might be called letter
@@ -21,6 +23,12 @@ type Style struct {
 var DefaultStyle Style = Style{
 	BackgroundColor: rl.GetColor(0x141516ff),
 
+	FontColor: rl.Color{
+		R: 221,
+		G: 221,
+		B: 221,
+		A: 255,
+	},
 	FontSize:    16,
 	FontSpacing: 2.4,
 
