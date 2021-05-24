@@ -4,17 +4,17 @@ import (
 	"testing"
 
 	rl "github.com/gen2brain/raylib-go/raylib"
-	"github.com/manen/rlnicex"
+	rlx "github.com/manen/rlnicex"
 )
 
 func TestFull(t *testing.T) {
 	rl.InitWindow(690, 420, "Test") // I can't keep memorizing these small 16:9 ratios
 	rl.SetTargetFPS(60)
 
-	rlnicex.LoadStyle("./test_assets/style.json")
+	rlx.LoadStyle("./test_assets/style.json")
 
-	r := rlnicex.NewOffset(0, 0)
-	btn := rlnicex.NewButton(rlnicex.NewLabelSimple("Nice"), 10, 10, 140, 40)
+	r := rlx.NewOffset(0, 0)
+	btn := rlx.NewButton(rlx.NewLabelSimple("Nice"), 10, 10, 140, 40)
 
 	for !rl.WindowShouldClose() {
 		rl.BeginDrawing()

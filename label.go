@@ -5,23 +5,30 @@ import rl "github.com/gen2brain/raylib-go/raylib"
 type Label struct {
 	Label    string
 	Centered bool
-	Pos      rl.Rectangle
+	Pos      rl.Vector2
 }
 
-func NewLabel(label string, centered bool, x, y, w, h float64) Label {
+func NewLabel(label string, centered bool, x, y float64) Label {
 	return Label{
 		Label:    label,
 		Centered: centered,
-		Pos:      rl.NewRectangle(float32(x), float32(y), float32(w), float32(h)),
+		Pos: rl.Vector2{
+			X: float32(x),
+			Y: float32(y),
+		},
 	}
 }
 
 func NewLabelSimple(label string) Label {
-	return NewLabel(label, true, 0, 0, 0, 0)
+	return NewLabel(label, true, 0, 0)
 }
 
 func (l Label) Render(r Offset) {
-	final := getFinal(l.Pos, r)
+	final := getFinal(rl.Rectangle{
+		X: float32(l.Pos.X),
+		Y: float32(l.Pos.Y),
+	}, r)
+
 	if l.Centered {
 		o := rl.MeasureTextEx(rl.GetFontDefault(), l.Label, float32(style.FontSize), float32(style.FontSpacing))
 		final.X -= int32(o.X / 2)
