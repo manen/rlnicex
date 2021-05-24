@@ -21,8 +21,6 @@ import (
 
 ### Styles
 
-> VERY IMPORTANT: One of the libraries we're using [(mergo)](https://github.com/imdario/mego) doesn't let us/you use values that could mean the original values were nil. That means we can't use 0 or false if the default or base style has a non-0 or non-false value in its place. I know, sucks. Please make a PR if you have an idea on how to fix this.
-
 Styles can be read from a JSON file.
 An example can be found [here](test_assets/style.json)
 
@@ -30,6 +28,23 @@ Load style:
 
 ```go
 err := rlx.LoadStyle("./path/to/style.json")
+if err != nil {
+  // Handle error
+}
+```
+
+NOTE: You can create manual styles too. Not recommended though.
+
+```go
+sc := rlx.StyleConfig{
+  Base: rlx.Style{
+    Background: rl.Black,
+  },
+  Held: rlx.Style{
+    BorderWidth: 4,
+  },
+}
+err := sc.Apply()
 if err != nil {
   // Handle error
 }
@@ -61,4 +76,12 @@ lbl := rlx.NewLabel("Label here!", false, 4, 4)
 
 ```go
 btn := rlx.NewButton(rlx.NewLabelSimple("Click me!"), 10, 10, 140, 40)
+```
+
+Check if clicked:
+
+```go
+if btn.IsClicked(r) {
+  log.Println("Clicked!")
+}
 ```
