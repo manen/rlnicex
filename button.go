@@ -17,9 +17,7 @@ func NewButton(label Label, x, y, w, h float64) Button {
 }
 
 func (b Button) Render(r Renderer) {
-	final := b.Pos.ToInt32()
-	final.X += int32(r.Offset.X)
-	final.Y += int32(r.Offset.Y)
+	final := getFinal(b.Pos, r)
 
 	// Draw the background
 	rl.DrawRectangle(final.X, final.Y, final.Width, final.Height, style.BackgroundColor)

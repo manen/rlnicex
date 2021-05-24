@@ -21,10 +21,7 @@ func NewLabelSimple(label string) Label {
 }
 
 func (l Label) Render(r Renderer) {
-	final := l.Pos.ToInt32()
-	final.X += int32(r.Offset.X)
-	final.Y += int32(r.Offset.Y)
-
+	final := getFinal(l.Pos, r)
 	if l.Centered {
 		o := rl.MeasureTextEx(rl.GetFontDefault(), l.Label, float32(style.FontSize), float32(style.FontSpacing))
 		final.X -= int32(o.X / 2)
